@@ -22,16 +22,16 @@ class GuileCommonmark < Formula
     ENV["GUILE_LOAD_COMPILED_PATH"] = lib/"guile/3.0/site-ccache"
 
     (testpath/"test-commonmark.scm").write <<~SCHEME
-     (use-modules (commonmark)
-                  (sxml simple))
+      (use-modules (commonmark)
+                   (sxml simple))
 
-     (define doc "Hello *World*.")
+      (define doc "Hello *World*.")
 
-     ;; Parses the CommonMark.
-     (define doc-sxml (commonmark->sxml doc))
+      ;; Parses the CommonMark.
+      (define doc-sxml (commonmark->sxml doc))
 
-     ;; Print to the stdout port
-     (sxml->xml doc-sxml)
+      ;; Print to the stdout port
+      (sxml->xml doc-sxml)
     SCHEME
 
     output = shell_output("#{Formula["guile"].bin}/guile --no-auto-compile test-commonmark.scm")
