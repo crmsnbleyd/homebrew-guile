@@ -11,7 +11,7 @@ class GuileCommonmark < Formula
     inreplace "configure", "2.2 2.0", "3.0 2.2 2.0"
     ENV["GUILE_EFFECTIVE_VERSION"] = "3.0"
 
-    system "./configure", "--prefix=#{prefix}"
+    system "./configure", *std_configure_args
     system "make"
     system "make", "install"
   end
