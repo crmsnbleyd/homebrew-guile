@@ -1,5 +1,5 @@
 class GuileHaunt < Formula
-  desc "A simple, functional, hackable static site generator that gives authors the ability to treat websites as Scheme programs."
+  desc "Simple, functional, hackable static site generator for Guile"
   homepage "https://dthompson.us/projects/haunt.html"
   url "https://files.dthompson.us/releases/haunt/haunt-0.3.0.tar.gz"
   sha256 "98babed06be54a066c3ebc94410a91eb7cc48367e94d528131d3ba271499992b"
@@ -20,7 +20,8 @@ class GuileHaunt < Formula
 
     (testpath/"test-haunt.scm").write <<~SCHEME
       (use-modules (haunt html))
-      (sxml->html-string '(script "console.log(\"Hello, world!\");"))
+      (write
+        (sxml->html-string '(script "console.log(\\"Hello, world!\\");")))
     SCHEME
 
     output = shell_output("#{Formula["guile"].bin}/guile --no-auto-compile test-haunt.scm")
