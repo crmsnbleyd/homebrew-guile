@@ -19,9 +19,11 @@ class GuileHaunt < Formula
     ENV["GUILE_LOAD_COMPILED_PATH"] = lib/"guile/3.0/site-ccache"
 
     (testpath/"test-haunt.scm").write <<~SCHEME
+      (use-modules (haunt html))
+      (sxml->html-string '(script "console.log(\"Hello, world!\");"))
     SCHEME
 
     output = shell_output("#{Formula["guile"].bin}/guile --no-auto-compile test-haunt.scm")
-    assert_match "<p>Hello <em>World</em>.</p>", output
+    assert_match "<script>console.log(&quot;Hello, world!&quot;);</script>", output
   end
 end
