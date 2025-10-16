@@ -1,5 +1,6 @@
-# Crmsnbleyd Guile
+# homebrew Guile tap
 
+Moved to <https://codeberg.org/crmsnbleyd/homebrew-guile>
 ## How do I install these formulae?
 
 `brew install crmsnbleyd/guile/<formula>`
